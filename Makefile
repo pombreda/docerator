@@ -9,11 +9,12 @@ makeicns: makeicns.o IconFamily.o NSString+CarbonFSRefCreation.o
 	g++ -o $@ $^ -O2 -arch ppc -arch i386 \
 	  -framework Foundation -framework AppKit -framework Carbon
 
+test:
+	python docerator_test.py
+
 clean:
 	rm -rf flow makeicns flow.o makeicns.o IconFamily.o NSString+CarbonFSRefCreation.o
 
-dist: makeicns
-	rm -rf makeicns-1.0.zip
-	zip makeicns-1.0.zip Makefile makeicns.m IconFamily.m IconFamily.h \
-	  NSString+CarbonFSRefCreation.m NSString+CarbonFSRefCreation.h \
-	  makeicns
+dist: makeicns flow test
+	rm -rf docerator-1.0.zip
+	zip docerator-1.0.zip makeicns docerator.py flow
