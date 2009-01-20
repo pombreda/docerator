@@ -261,8 +261,6 @@ def splitGenericDocumentIcon(img, s):
       shadowdata[idx + 2] = chr(255)
       shadowdata[idx + 3] = chr(255)
 
-  ground.save('out_ground%d.png' % w)
-  shadow.save('out_shadow%d.png' % w)
   return ground, shadow
 
 
