@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <map>
 #include <string>
 #include <vector>
 
@@ -910,6 +911,7 @@ int main(int argc, char* argv[]) {
   if (numDocs != numApps)
     printf("Image counts do not match (%d != %d)\n", numDocs, numApps);
 
+  std::map<int, std::vector<double> > foundRects;
   for (int docIndex = 0, appIndex = 0;
       docIndex < numDocs && appIndex < numApps;) {
 
@@ -1003,8 +1005,21 @@ int main(int argc, char* argv[]) {
     interp2Scale(docIcon.pix, appIcon.pix, docIcon.w, docIcon.h, a, 3);
     SaveImage(docIcon, "%d_out_estimated.png", docIndex);
 
+    for (int t = 0; t < 4; ++t)
+      foundRects[docIcon.w].push_back(a[t]);
+
     ++docIndex, ++appIndex;
   }
+
+  std::map<int, std::vector<double> >::iterator it, end = foundRects.end();
+  printf("\nrects = {\n");
+  for (it = foundRects.begin(); it != end; ++it) {
+    printf("    %3d: (", it->first);
+    for (int t = 0; t < 4; ++t)
+      printf("%8.4f%s", it->second[t], t == 3 ? "" : ", ");
+    printf("),\n");
+  }
+  printf("}\n");
 
   freeImageSource(docIcons);
   freeImageSource(appIcons);
