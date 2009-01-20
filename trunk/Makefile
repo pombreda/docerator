@@ -13,8 +13,8 @@ test:
 	python docerator_test.py
 
 clean:
-	rm -rf flow makeicns flow.o makeicns.o IconFamily.o NSString+CarbonFSRefCreation.o *.pyc
+	rm -rf flow makeicns flow.o makeicns.o IconFamily.o NSString+CarbonFSRefCreation.o *.pyc docerator-*.zip
 
 dist: makeicns flow test
 	rm -rf docerator-1.0.zip
-	zip docerator-1.0.zip makeicns docerator.py flow
+	zip docerator-1.0.zip makeicns docerator.py flow examples/acorn.py README.txt
