@@ -90,9 +90,7 @@ $(document).ready(function() {
 if __name__ == '__main__':
   whitelist = sys.argv[1:]
 
-  writehtml()  # i'm impatient, first index what is there
   d = os.getcwd()
-
   for appname, rawname, docicon, icon in files():
     if whitelist and rawname not in whitelist: continue
 
@@ -101,6 +99,9 @@ if __name__ == '__main__':
       print 'Skipping', r
       continue
     p = os.path.join(d, 'flowtests', rawname)
+
+    os.chdir(d)
+    writehtml()  # i'm impatient, first index what is there
 
     for f in glob.glob(os.path.join(p, '*.png')):
       os.remove(f)
