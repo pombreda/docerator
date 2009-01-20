@@ -13,7 +13,7 @@ test:
 	python docerator_test.py
 
 clean:
-	rm -rf flow makeicns flow.o makeicns.o IconFamily.o NSString+CarbonFSRefCreation.o
+	rm -rf flow makeicns flow.o makeicns.o IconFamily.o NSString+CarbonFSRefCreation.o *.pyc
 
 dist: makeicns flow test
 	rm -rf docerator-1.0.zip
