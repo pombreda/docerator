@@ -502,9 +502,9 @@ def makedocicon_opts(options):
   if options.appicon:
     testIcon = cachedImage(options.appicon)
 
-  if hasattr(options, 'size') and options.size:
-    if isinstance(options.size, list):
-      sizes = options.size
+  if hasattr(options, 'sizes') and options.sizes:
+    if isinstance(options.sizes, list):
+      sizes = options.sizes
     else:
       sizes = map(int, options.sizes.split(','))
   else:
@@ -556,7 +556,7 @@ def makedocicons_opts(options):
 
 
 def getopts():
-  parser = OptionParser(usage='%prog [options]', version='%prog 1.0')
+  parser = OptionParser(usage='%prog [options]', version='%prog 1.01')
   parser.add_option('--background', '--bg', default='default-split',
       help='Used as background (special values: "default-split" (default), ' \
           '"default-unsplit").')
