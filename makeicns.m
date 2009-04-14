@@ -43,9 +43,9 @@ void usage() {
 "         but with icns extension\n\n");
   fprintf(stderr,
 "Examples:\n\n"
-"  icns -512 image.png -32 image.png\n"
+"  makeicns -512 image.png -32 image.png\n"
 "      Creates image.icns with only a 512x512 and a 32x32 variant.\n\n"
-"  icns -in myfile.jpg -32 otherfile.png -out outfile.icns\n"
+"  makeicns -in myfile.jpg -32 otherfile.png -out outfile.icns\n"
 "      Creates outfile.icns with sizes 512, 256, 128, and 16 containing data\n"
 "      from myfile.jpg and with size 32 containing data from otherfile.png.\n");
   exit(1);
