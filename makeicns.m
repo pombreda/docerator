@@ -1,6 +1,7 @@
 // makeicns
 // Converts images to Apple's icns format.
 // Written by nicolasweber@gmx.de, released under MIT license.
+// Belongs to docerator, http://code.google.com/p/docerator/
 
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
@@ -16,7 +17,7 @@ enum {
 };
 #endif
 
-#define VERSION "1.0 (20081122)"
+#define VERSION "1.1 (20090413)"
 
 void usage() {
   fprintf(stderr,
