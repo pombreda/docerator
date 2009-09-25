@@ -17,4 +17,4 @@ clean:
 
 dist: makeicns flow test
 	rm -rf docerator-*.zip
-	zip docerator-1.01.zip makeicns docerator.py flow examples/acorn.py README.txt
+	zip docerator-1.2.zip makeicns docerator.py flow examples/acorn.py README.txt
