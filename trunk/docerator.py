@@ -11,7 +11,7 @@ from optparse import OptionParser
 
 # Resources
 DEFAULT_BACKGROUND = '/System/Library/CoreServices/CoreTypes.bundle/' + \
-    'Contents/Resources/GenericDocumentIcon.icns'  # might require leopard?
+    'Contents/Resources/GenericDocumentIcon.icns'  # Exists on 10.4, 10.5, 10.6
 
 
 # Cache both images and background renderers globally
@@ -453,6 +453,8 @@ def getOutname(options):
     base = saneBasename(options.appicon)
   else:
     base = saneBasename(getBgName(options))
+  if options.destination:
+    base = os.path.join(options.destination, base)
   return '%s-%s.icns' % (base, textPart)
 
 
@@ -590,8 +592,9 @@ def getopts():
   parser.add_option('--background', '--bg', default='default-split',
       help='Used as background (special values: "default-split" (default), ' \
           '"default-unsplit").')
+  parser.add_option('--destination', help='Destination directory for icon(s).' \
+      ' Defaults to --appicon\'s or --background\'s directory.')
   parser.add_option('--appicon', help='App icon, defaults to no icon.')
-
   parser.add_option('--text', help='Text on icon. Defaults to empty. '
       'More than one text is supported, multiple docicons are generated in '
       'that case.', action='append')
