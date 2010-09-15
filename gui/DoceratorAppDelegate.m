@@ -371,9 +371,9 @@
 	NSString		*filename;
 	BOOL			isDir = FALSE;
 	
-    if ( [[pboard types] containsObject: NSFilenamesPboardType] ) 
+	if ( [[pboard types] containsObject: NSFilenamesPboardType] )
 	{
-        NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
+		NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
 		filename = [files objectAtIndex: 0];//we only load the first dragged item
 		if ([[NSFileManager defaultManager] fileExistsAtPath: filename isDirectory: &isDir] && !isDir)
 		{
@@ -388,10 +388,10 @@
 	return NO;
 }
 
-- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender 
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
 {
 	// we accept dragged files
-    if ([[[sender draggingPasteboard] types] containsObject:NSFilenamesPboardType])
+	if ([[[sender draggingPasteboard] types] containsObject:NSFilenamesPboardType])
 	{
 		NSArray *files = [[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType];
 		int i;
