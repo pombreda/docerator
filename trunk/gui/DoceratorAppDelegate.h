@@ -31,7 +31,7 @@
 
 @interface DoceratorAppDelegate : NSObject
 {
-    IBOutlet id window;
+	IBOutlet id window;
 	IBOutlet id	appIconImageView;
 	IBOutlet id appIconFilenameLabel;
 	IBOutlet id size512Checkbox;
