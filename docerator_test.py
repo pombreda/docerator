@@ -20,6 +20,7 @@ class OutnameTest(unittest.TestCase):
     def __init__(self, **kwargs):
       for k in kwargs:
         self.__setattr__(k, kwargs[k])
+      self.destination = None
 
   def testBasic(self):
     options = OutnameTest.FakeOptions(

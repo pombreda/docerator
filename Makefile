@@ -1,5 +1,5 @@
 CFLAGS = -fpascal-strings -O2 -arch ppc -arch i386 -Wall -ggdb
-.PHONY: clean dist
+.PHONY: clean dist gui test
 
 flow: flow.o
 	g++ -o $@ $^ -O2 \
@@ -13,8 +13,15 @@ test:
 	python docerator_test.py
 
 clean:
-	rm -rf flow makeicns flow.o makeicns.o IconFamily.o NSString+CarbonFSRefCreation.o *.pyc docerator-*.zip
+	rm -rf flow makeicns flow.o makeicns.o IconFamily.o \
+		NSString+CarbonFSRefCreation.o *.pyc docerator-*.zip gui/build \
+		Docerator.app
 
-dist: makeicns flow test
+gui:
+	cd gui && xcodebuild -target Docerator -configuration Release && \
+		cp -r build/Release/Docerator.app ..
+
+dist: makeicns flow test gui
 	rm -rf docerator-*.zip
-	zip docerator-1.2.zip makeicns docerator.py flow examples/acorn.py README.txt
+	zip -r docerator-2.0.zip \
+		makeicns docerator.py flow examples/acorn.py README.txt Docerator.app
